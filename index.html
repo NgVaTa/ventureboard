@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#10231f" />
+    <title>Ventureboard — Startup OS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="enhancements.css" />
+  </head>
+  <body>
+    <aside class="sidebar" id="appSidebar">
+      <div class="brand"><span class="brand-mark">V</span><span>ventureboard</span></div>
+      <div class="workspace-area" id="workspaceArea">
+        <button class="workspace-switch" id="workspaceSwitcher" type="button" aria-haspopup="menu" aria-expanded="false"><span class="workspace-icon" id="workspaceIcon">S</span><span id="workspaceName">Seed workspace</span><span class="chevron">⌄</span></button>
+        <div class="workspace-menu" id="workspaceMenu" role="menu" hidden></div>
+      </div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-view="overview" aria-current="page"><span class="nav-symbol">◉</span><span class="nav-label">Overview</span></button>
+        <button class="nav-item" data-view="work"><span class="nav-symbol">✓</span><span class="nav-label">Work</span></button>
+        <button class="nav-item" data-view="projects"><span class="nav-symbol">▱</span><span class="nav-label">Projects</span></button>
+        <button class="nav-item" data-view="knowledge"><span class="nav-symbol">▤</span><span class="nav-label">Knowledge</span></button>
+        <button class="nav-item" data-view="decisions"><span class="nav-symbol">◇</span><span class="nav-label">Decisions</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="plan-card"><span class="plan-dot"></span><div><b id="workspaceStage">Seed stage</b><small id="workspaceCapacity">24h team capacity</small></div></div>
+        <button class="nav-item" id="openSettings"><span>⚙</span><span data-i18n="settings">Settings</span></button>
+        <div class="account-area" id="accountArea">
+          <button class="person account-trigger" id="accountSwitcher" type="button" aria-haspopup="menu" aria-expanded="false"><span class="avatar amber" id="accountAvatar">A</span><span class="account-copy"><b id="accountName">Alex Kim</b><small id="accountRole">Co-founder</small></span><span class="more">•••</span></button>
+          <div class="account-menu" id="accountMenu" role="menu" hidden></div>
+        </div>
+      </div>
+    </aside>
+    <button class="mobile-nav-backdrop" id="mobileNavBackdrop" type="button" aria-label="Close navigation" data-i18n-aria-label="closeNavigation" hidden></button>
+
+    <main>
+      <header class="topbar">
+        <button class="mobile-menu" aria-label="Open navigation" aria-controls="appSidebar" aria-expanded="false">☰</button>
+        <div class="crumb"><span id="workspaceCrumb">SEED WORKSPACE</span><span>/</span><span id="viewCrumb">THIS WEEK</span></div>
+        <div class="top-actions"><button class="search-trigger" id="openSearch" aria-label="Search workspace" data-i18n-aria-label="searchWorkspace"><span>⌕</span><b data-i18n="search">Search</b><kbd>⌘ K</kbd></button><div class="preference-controls" role="group" aria-label="Language and appearance" data-i18n-aria-label="languageAndAppearance"><button class="preference-button language-button" id="languageToggle" type="button" aria-label="Switch to Vietnamese"><span>文</span><b id="languageToggleLabel">VI</b></button><button class="preference-button theme-button" id="themeToggle" type="button" aria-label="Switch to dark theme"><span id="themeToggleIcon">☾</span><span class="sr-only" id="themeToggleLabel">Switch to dark theme</span></button></div><button class="icon-button notification" id="openNotifications" aria-label="Notifications" data-i18n-aria-label="notifications">♧<i></i></button></div>
+      </header>
+
+      <section id="overview" class="view active-view">
+        <div class="hero">
+          <div><p class="eyebrow" id="overviewEyebrow">MONDAY, AUGUST 24</p><h1 id="overviewHeadline">Build the right thing,<br><em>in the right week.</em></h1><p class="hero-copy" id="overviewCopy">A calm operating rhythm for the work that moves your company forward.</p></div>
+          <div class="week-pill"><span class="pulse-dot"></span><div><b><span data-i18n="week">Week</span> 35</b><small data-i18n-known>Aug 24 — Aug 30</small></div></div>
+        </div>
+
+        <section class="signal-grid">
+          <article class="signal-card focus-card"><div class="card-label"><span data-i18n="focusThisWeek">THIS WEEK'S FOCUS</span> <button class="plain-edit" id="openFocus" aria-label="Edit focus" data-i18n-aria-label="editFocus">↗</button></div><h2 id="focusTitle">Clinician discovery sprint</h2><p id="focusDescription">Validate the acute-care workflow with 5 conversations.</p><div class="focus-meta"><span class="tag sage" data-i18n="discovery">Discovery</span><span><strong id="focusProgress">2/5</strong> <span data-i18n="interviewsBooked">interviews booked</span></span></div></article>
+          <article class="signal-card capacity-card"><div class="card-label"><span data-i18n="teamCapacity">TEAM CAPACITY</span> <span class="status-chip">On track</span></div><div class="capacity-number"><span id="usedHours">15</span><small>/ <span id="totalHours">24</span>h <span data-i18n="planned">planned</span></small></div><div class="capacity-bar"><span id="capacityFill"></span></div><div class="capacity-foot"><span><i class="mini-dot amber-dot"></i>Alex <b id="alexHours">8h</b></span><span><i class="mini-dot blue-dot"></i>Sam <b id="samHours">7h</b></span><span id="remainingHours">9h open</span></div></article>
+          <article class="signal-card runway-card"><div class="card-label"><span data-i18n="cashRunway">CASH RUNWAY</span> <button class="plain-edit" id="openFinance" aria-label="Open finances" data-i18n-aria-label="openFinances">↗</button></div><div class="runway-main"><span id="runwayMonths">13.4</span><small data-i18n="months">months</small></div><p><span data-i18n="atCurrentBurn">At current monthly burn of</span> <b id="monthlyBurn">$8,240</b></p><div class="runway-footer"><span class="trend" data-i18n-known>↗ 0.6 mo</span><span data-i18n="vsLastMonth">vs. last month</span></div></article>
+        </section>
+
+        <section class="section-head"><div><p class="eyebrow" id="priorityEyebrow">THE ONLY THINGS THAT MATTER</p><h2 id="priorityHeading">Move the week forward</h2></div><div class="section-actions"><span class="section-note" id="prioritySummary">4 priorities · 15h planned</span><button class="text-button" id="viewAllWork"><span data-i18n-known>View all work</span> <span>→</span></button></div></section>
+        <section class="work-layout">
+          <div class="task-list" id="priorityTasks"></div>
+          <aside class="side-panel">
+            <div class="panel-heading"><div><p class="eyebrow" data-i18n="nextMilestone">NEXT MILESTONE</p><h3 data-i18n="discoveryEvidence">Discovery evidence</h3></div><span class="milestone-icon">↗</span></div>
+            <p data-i18n="milestoneCopy">Enough evidence to decide if this workflow is worth building.</p>
+            <div class="milestone-progress"><div><span data-i18n="evidenceCaptured">Evidence captured</span><b>40%</b></div><div class="thin-bar"><span></span></div><small data-i18n="milestoneDue">Due September 4 · 11 days</small></div>
+            <hr />
+            <p class="eyebrow mini-head" data-i18n="upNext">UP NEXT</p>
+            <div class="mini-task"><span class="avatar blue">S</span><div><b data-i18n-known>Prototype test plan</b><small>Sam · 2h</small></div><span>→</span></div>
+            <div class="mini-task"><span class="avatar amber">A</span><div><b data-i18n-known>Investor update draft</b><small>Alex · 1h</small></div><span>→</span></div>
+          </aside>
+        </section>
+
+        <section class="bottom-grid">
+          <article class="ritual-card"><div class="panel-heading"><div><p class="eyebrow" data-i18n="founderRhythm">FOUNDER RHYTHM</p><h3 data-i18n="fridayReview">Friday review</h3></div><span class="calendar-mini">30</span></div><p data-i18n="reviewCopy">Close loops, choose next week's focus, and make the hard calls.</p><button class="outline-button" id="openReview"><span data-i18n="openReview">Open review</span> <span>→</span></button></article>
+          <article class="decision-card"><div class="panel-heading"><div><p class="eyebrow" data-i18n="needsDecision">NEEDS A DECISION</p><h3 data-i18n="dataStrategy">Data strategy for pilot</h3></div><span class="decision-count">1</span></div><p data-i18n="dataStrategyCopy">Decide whether to use a synthetic dataset or pursue a limited data agreement.</p><div><span class="tag rose" data-i18n="decisionDueThu">Decision due Thu</span><span class="avatar-stack"><i class="avatar amber">A</i><i class="avatar blue">S</i></span></div></article>
+        </section>
+      </section>
+
+      <section id="work" class="view simple-view"><div class="page-title"><p class="eyebrow" id="workEyebrow">EXECUTION</p><h1 id="workPageTitle">All work</h1><button class="new-button" id="openTaskModal2">+ New work</button></div><div class="work-toolbar"><select class="filter active-filter" id="statusFilter" aria-label="Filter by status" data-i18n-aria-label="filterByStatus"><option value="open" data-i18n="openThisWeek">Open this week</option><option value="all" data-i18n="allWork">All work</option><option value="done" data-i18n="completed">Completed</option></select><select class="filter" id="ownerFilter" aria-label="Filter by owner" data-i18n-aria-label="filterByOwner"><option value="all" data-i18n="allOwners">All owners</option><option value="Alex">Alex</option><option value="Sam">Sam</option><option value="Both founders" data-i18n="bothFounders">Both founders</option></select><select class="filter" id="initiativeFilter" aria-label="Filter by initiative" data-i18n-aria-label="filterByInitiative"><option value="all" data-i18n="allInitiatives">All initiatives</option><option value="Discovery" data-i18n="discovery">Discovery</option><option value="Prototype" data-i18n="prototype">Prototype</option><option value="Fundraising" data-i18n="fundraising">Fundraising</option><option value="Operations" data-i18n="operations">Operations</option></select></div><div class="work-summary" aria-live="polite"><span id="workResultSummary">4 open items</span><span id="workHoursSummary">15h planned this week</span></div><div class="all-task-list" id="allTasks"></div></section>
+      <section id="projects" class="view simple-view"><div class="page-title"><p class="eyebrow" id="projectsEyebrow">INITIATIVES</p><h1 id="projectsPageTitle">Projects</h1><button class="new-button" id="openProjectModal">+ New project</button></div><div class="projects-context"><div><b id="projectSummary">3 active initiatives</b><span id="projectContextCopy">Keep active bets small and tied to the evidence you need next.</span></div><span class="tag sage" id="projectsTag">Focus: discovery</span></div><div class="projects-grid" id="projectsGrid"></div></section>
+      <section id="knowledge" class="view simple-view"><div class="page-title"><p class="eyebrow" id="knowledgeEyebrow">YOUR SHARED MEMORY</p><h1 id="knowledgePageTitle">Knowledge base</h1><button class="new-button" id="openKnowledgeModal">+ New note</button></div><p class="page-intro" id="knowledgeIntro">A decision is only as good as the evidence your founders can find when they need it.</p><div class="knowledge-grid"><button class="knowledge-card active" data-knowledge="Customer insights" aria-pressed="true"><span>◫</span><h3 data-i18n="customerInsights">Customer insights</h3><p>14 notes · Updated today</p></button><button class="knowledge-card" data-knowledge="Product &amp; clinical" aria-pressed="false"><span>⌁</span><h3 data-i18n="productAndClinical">Product &amp; clinical</h3><p>8 documents · Updated Friday</p></button><button class="knowledge-card" data-knowledge="Fundraising" aria-pressed="false"><span>⌘</span><h3 data-i18n="fundraising">Fundraising</h3><p>6 documents · Updated Aug 18</p></button></div><article class="knowledge-preview" id="knowledgePreview" aria-live="polite"><div><p class="eyebrow">LATEST IN CUSTOMER INSIGHTS</p><h2>Care teams need proof before a workflow change</h2><p>Three of the latest interviews point to one shared threshold: confidence in the patient-specific signal before the team changes a familiar protocol.</p><div class="knowledge-meta"><span class="avatar amber">A</span><span>Added by Alex · Today</span></div></div><button class="outline-button" id="openKnowledgeNote">Open note <span>→</span></button></article></section>
+      <section id="decisions" class="view simple-view"><div class="page-title"><p class="eyebrow" id="decisionsEyebrow">MAKE THE CALL</p><h1 id="decisionsPageTitle">Decisions</h1><button class="new-button" id="openDecisionModal">+ New decision</button></div><div class="decisions-list" id="decisionsList"></div></section>
+    </main>
+    <nav class="mobile-tabbar" aria-label="Mobile navigation" data-i18n-aria-label="mobileNavigation">
+      <button class="mobile-tab active" type="button" data-view="overview" aria-current="page"><span class="mobile-tab-symbol">◉</span><span class="mobile-tab-label" data-mobile-nav-label="overview">Home</span></button>
+      <button class="mobile-tab" type="button" data-view="work"><span class="mobile-tab-symbol">✓</span><span class="mobile-tab-label" data-mobile-nav-label="work">Work</span></button>
+      <button class="mobile-tab" type="button" data-view="projects"><span class="mobile-tab-symbol">▱</span><span class="mobile-tab-label" data-mobile-nav-label="projects">Projects</span></button>
+      <button class="mobile-tab" type="button" data-view="knowledge"><span class="mobile-tab-symbol">▤</span><span class="mobile-tab-label" data-mobile-nav-label="knowledge">Knowledge</span></button>
+      <button class="mobile-tab" type="button" data-view="decisions"><span class="mobile-tab-symbol">◇</span><span class="mobile-tab-label" data-mobile-nav-label="decisions">Decisions</span></button>
+    </nav>
+
+    <dialog id="workspaceModal" aria-labelledby="workspaceModalTitle">
+      <form method="dialog" id="workspaceForm" class="modal-form">
+        <header class="modal-header">
+          <div><p class="eyebrow" data-i18n-known>NEW WORKSPACE</p><h2 id="workspaceModalTitle" data-i18n-known>Create a workspace</h2><p data-i18n-known>Keep a distinct operating rhythm for each company effort.</p></div>
+          <button class="modal-close" value="cancel" aria-label="Close dialog">×</button>
+        </header>
+        <div class="modal-body">
+          <label><span data-i18n-known>Workspace name</span><input id="workspaceInput" required maxlength="40" placeholder="e.g. Partner pilot" /></label>
+          <label><span data-i18n-known>Operating mode</span><select id="workspaceDesign"><optgroup label="Core company"><option value="seed" data-i18n-known>Seed company</option><option value="discovery" data-i18n-known>Discovery &amp; PMF</option><option value="product" data-i18n-known>Product &amp; delivery</option></optgroup><optgroup label="Growth"><option value="growth" data-i18n-known>Go-to-market &amp; revenue</option><option value="customer" data-i18n-known>Customer success</option></optgroup><optgroup label="Company operations"><option value="people" data-i18n-known>Team &amp; talent</option><option value="operations" data-i18n-known>Finance &amp; operations</option><option value="risk" data-i18n-known>Trust &amp; compliance</option></optgroup><optgroup label="Strategic"><option value="pilot" data-i18n-known>Clinical pilot</option><option value="fundraise" data-i18n-known>Fundraise</option></optgroup></select></label>
+          <p class="form-note" data-i18n-known>New workspaces start with the same light starter setup. Your other workspaces stay unchanged.</p>
+        </div>
+        <footer class="modal-footer"><span data-i18n-known>Private to this browser</span><button class="new-button submit-button" value="default"><span data-i18n-known>Create workspace</span> <span>→</span></button></footer>
+      </form>
+    </dialog>
+
+    <dialog id="accountModal" aria-labelledby="accountModalTitle">
+      <form method="dialog" id="accountForm" class="modal-form">
+        <header class="modal-header">
+          <div><p class="eyebrow" data-i18n-known>YOUR ACCOUNT</p><h2 id="accountModalTitle" data-i18n-known>Profile details</h2><p data-i18n-known>These details identify who is active in this shared workspace.</p></div>
+          <button class="modal-close" value="cancel" aria-label="Close dialog">×</button>
+        </header>
+        <div class="modal-body">
+          <label><span data-i18n-known>Name</span><input id="accountNameInput" required maxlength="40" /></label>
+          <label><span data-i18n-known>Role</span><input id="accountRoleInput" required maxlength="50" placeholder="e.g. Co-founder" /></label>
+          <p class="form-note" data-i18n-known>Workspace data is shared. Switching accounts changes the active profile, not the underlying work.</p>
+        </div>
+        <footer class="modal-footer"><span data-i18n-known>Saved on this device</span><button class="new-button submit-button" value="default"><span data-i18n-known>Save profile</span> <span>→</span></button></footer>
+      </form>
+    </dialog>
+
+    <dialog id="projectModal" aria-labelledby="projectModalTitle">
+      <form method="dialog" id="projectForm" class="modal-form">
+        <header class="modal-header">
+          <div><p class="eyebrow" id="projectModalEyebrow" data-i18n-known>NEW INITIATIVE</p><h2 id="projectModalTitle" data-i18n-known>Create a project</h2><p id="projectModalDescription" data-i18n-known>Start with the smallest initiative that can produce useful evidence.</p></div>
+          <button class="modal-close" value="cancel" aria-label="Close dialog">×</button>
+        </header>
+        <div class="modal-body">
+          <label><span data-i18n-known>Project name</span><input id="projectTitle" required maxlength="80" placeholder="e.g. Clinical pilot preparation" /></label>
+          <label><span data-i18n-known>What does it need to achieve?</span><textarea id="projectDescription" required maxlength="240" placeholder="Describe the outcome or decision this project should unlock."></textarea></label>
+          <div class="form-row"><label><span data-i18n-known>Next milestone</span><input id="projectMilestone" required maxlength="80" placeholder="e.g. Define test environment" /></label><label><span data-i18n-known>Health</span><select id="projectStatus"><option value="On track" data-i18n-known>On track</option><option value="Needs focus" data-i18n-known>Needs focus</option></select></label></div>
+        </div>
+        <footer class="modal-footer"><span id="projectModalFooter" data-i18n-known>Starts at 0% progress</span><button class="new-button submit-button" value="default"><span id="projectModalSubmit" data-i18n-known>Create project</span> <span>→</span></button></footer>
+      </form>
+    </dialog>
+
+    <dialog id="knowledgeModal" aria-labelledby="knowledgeModalTitle">
+      <form method="dialog" id="knowledgeForm" class="modal-form">
+        <header class="modal-header">
+          <div><p class="eyebrow" id="knowledgeModalEyebrow" data-i18n-known>CAPTURE THE SIGNAL</p><h2 id="knowledgeModalTitle" data-i18n-known>New knowledge note</h2><p id="knowledgeModalDescription" data-i18n-known>Record the insight while it can still shape the team’s next decision.</p></div>
+          <button class="modal-close" value="cancel" aria-label="Close dialog">×</button>
+        </header>
+        <div class="modal-body">
+          <label><span data-i18n-known>Area</span><select id="knowledgeArea"><option value="Customer insights" data-i18n="customerInsights">Customer insights</option><option value="Product &amp; clinical" data-i18n="productAndClinical">Product &amp; clinical</option><option value="Fundraising" data-i18n="fundraising">Fundraising</option></select></label>
+          <label><span data-i18n-known>Insight title</span><input id="knowledgeTitle" required maxlength="100" placeholder="e.g. Parallel workflows reduce adoption risk" /></label>
+          <label><span data-i18n-known>What did you learn?</span><textarea id="knowledgeInsight" required maxlength="500" placeholder="Capture the evidence, source, and why this matters now."></textarea></label>
+        </div>
+        <footer class="modal-footer"><span id="knowledgeModalFooter" data-i18n-known>Shared in this workspace</span><button class="new-button submit-button" value="default"><span id="knowledgeModalSubmit" data-i18n-known>Save note</span> <span>→</span></button></footer>
+      </form>
+    </dialog>
+
+    <dialog id="decisionModal" class="dialog--review" aria-labelledby="decisionModalTitle">
+      <form method="dialog" id="decisionForm" class="modal-form">
+        <header class="modal-header">
+          <div><p class="eyebrow" id="decisionModalEyebrow" data-i18n-known>MAKE THE CALL</p><h2 id="decisionModalTitle" data-i18n-known>New decision</h2><p id="decisionModalDescription" data-i18n-known>Frame the decision, the evidence, and the real choices before debating it.</p></div>
+          <button class="modal-close" value="cancel" aria-label="Close dialog">×</button>
+        </header>
+        <div class="modal-body">
+          <label><span data-i18n-known>Decision</span><input id="decisionTitle" required maxlength="100" placeholder="e.g. Choose the pilot rollout path" /></label>
+          <label><span data-i18n-known>Why does it matter?</span><textarea id="decisionSummary" required maxlength="300" placeholder="Describe what this decision unlocks or protects."></textarea></label>
+          <div class="form-row"><label><span data-i18n-known>Due</span><select id="decisionDue"><option value="Due this week" data-i18n-known>Due this week</option><option value="Due Thursday" data-i18n-known>Due Thursday</option><option value="Due Friday" data-i18n-known>Due Friday</option><option value="Due next week" data-i18n-known>Due next week</option></select></label><label><span data-i18n-known>Decision owner</span><input id="decisionOwner" required maxlength="60" placeholder="e.g. Alex + Sam" /></label></div>
+          <label><span data-i18n-known>Evidence needed</span><input id="decisionEvidence" required maxlength="100" placeholder="e.g. Clinical workflow fit" /></label>
+          <div class="form-row"><label><span data-i18n-known>Option one</span><input id="decisionOptionA" required maxlength="80" placeholder="First direction" /></label><label><span data-i18n-known>Option two</span><input id="decisionOptionB" required maxlength="80" placeholder="Second direction" /></label></div>
+        </div>
+        <footer class="modal-footer"><span id="decisionModalFooter" data-i18n-known>Saved for the whole team</span><button class="new-button submit-button" value="default"><span id="decisionModalSubmit" data-i18n-known>Add decision</span> <span>→</span></button></footer>
+      </form>
+    </dialog>
+
+    <dialog id="taskModal" class="dialog--task" aria-labelledby="taskModalTitle">
+      <form method="dialog" id="taskForm" class="modal-form">
+        <header class="modal-header">
+          <div><p class="eyebrow" id="taskModalEyebrow" data-i18n-known>ADD TO THE WEEK</p><h2 id="taskModalTitle" data-i18n-known>New work item</h2><p id="taskModalDescription" data-i18n-known>Turn a meaningful outcome into an owned, time-boxed commitment.</p></div>
+          <button class="modal-close" value="cancel" aria-label="Close dialog">×</button>
+        </header>
+        <div class="modal-body">
+          <div class="modal-callout"><span class="callout-icon">◷</span><p><b id="taskCapacityHint">9h still available this week</b><small data-i18n-known>Keep commitments small enough to finish.</small></p></div>
+          <label><span data-i18n-known>What needs to happen?</span><input id="taskTitle" required maxlength="120" placeholder="e.g. Book two clinician interviews" /></label>
+          <div class="form-row">
+            <label><span data-i18n-known>Owner</span><select id="taskOwner"><option value="Alex">Alex</option><option value="Sam">Sam</option><option value="Both founders" data-i18n="bothFounders">Both founders</option></select></label>
+            <label><span data-i18n-known>Effort</span><select id="taskHours"><option value="1" data-i18n-known>1 hour</option><option value="2" selected data-i18n-known>2 hours</option><option value="3" data-i18n-known>3 hours</option><option value="4" data-i18n-known>4 hours</option><option value="6" data-i18n-known>6 hours</option></select></label>
+          </div>
+          <label><span data-i18n-known>Initiative</span><select id="taskInitiative"><option value="Discovery" data-i18n="discovery">Discovery</option><option value="Prototype" data-i18n="prototype">Prototype</option><option value="Fundraising" data-i18n="fundraising">Fundraising</option><option value="Operations" data-i18n="operations">Operations</option></select></label>
+          <label><span data-i18n-known>Due</span><select id="taskDue"><option value="This week" data-i18n-known>This week</option><option value="Monday" data-i18n-known>Monday</option><option value="Tuesday" data-i18n-known>Tuesday</option><option value="Wednesday" data-i18n-known>Wednesday</option><option value="Thursday" data-i18n-known>Thursday</option><option value="Friday" data-i18n-known>Friday</option></select></label>
+        </div>
+        <footer class="modal-footer"><span id="taskModalFooter" data-i18n-known>Saved to this week</span><button class="new-button submit-button" value="default"><span id="taskModalSubmit" data-i18n-known>Add work item</span> <span>→</span></button></footer>
+      </form>
+    </dialog>
+
+    <dialog id="focusModal" aria-labelledby="focusModalTitle">
+      <form method="dialog" id="focusForm" class="modal-form">
+        <header class="modal-header">
+          <div><p class="eyebrow" data-i18n-known>GUIDE THE WEEK</p><h2 id="focusModalTitle" data-i18n-known>Weekly focus</h2><p data-i18n-known>Give the team one outcome worth protecting.</p></div>
+          <button class="modal-close" value="cancel" aria-label="Close dialog">×</button>
+        </header>
+        <div class="modal-body">
+          <div class="modal-callout"><span class="callout-icon">◎</span><p><b data-i18n-known>Make it measurable</b><small data-i18n-known>Pair the outcome with the evidence that proves progress.</small></p></div>
+          <label><span data-i18n-known>Focus statement</span><input id="focusInput" required maxlength="90" placeholder="e.g. Validate the acute-care workflow" /></label>
+          <label><span data-i18n-known>What outcome are you pursuing?</span><input id="focusDescInput" required maxlength="150" placeholder="Describe the evidence or decision this unlocks" /></label>
+          <label><span data-i18n-known>Progress indicator</span><input id="focusProgressInput" required maxlength="20" placeholder="e.g. 2/5 interviews booked" /></label>
+        </div>
+        <footer class="modal-footer"><span data-i18n-known>Updates the focus card</span><button class="new-button submit-button" value="default"><span data-i18n-known>Save focus</span> <span>→</span></button></footer>
+      </form>
+    </dialog>
+
+    <dialog id="settingsModal" aria-labelledby="settingsModalTitle">
+      <form method="dialog" id="settingsForm" class="modal-form">
+        <header class="modal-header">
+          <div><p class="eyebrow" data-i18n-known>WORKING AGREEMENT</p><h2 id="settingsModalTitle" data-i18n-known>Team capacity</h2><p data-i18n-known>Set the real, protected time your team has this week.</p></div>
+          <button class="modal-close" value="cancel" aria-label="Close dialog">×</button>
+        </header>
+        <div class="modal-body">
+          <div class="capacity-summary"><span data-i18n-known>Planned work</span><strong id="capacityPlannedHint">15h</strong><small id="capacityBalanceHint">9h unallocated</small></div>
+          <label><span data-i18n-known>Available hours this week</span><input id="capacityInput" required type="number" min="1" max="168" /></label>
+          <p class="form-note" data-i18n-known>Use time you can actually protect—not the time you hope will appear.</p>
+        </div>
+        <footer class="modal-footer"><span data-i18n-known>Applies to this week only</span><button class="new-button submit-button" value="default"><span data-i18n-known>Save capacity</span> <span>→</span></button></footer>
+      </form>
+    </dialog>
+
+    <dialog id="searchModal" class="dialog--search" aria-labelledby="searchModalTitle">
+      <form method="dialog" class="modal-form">
+        <header class="modal-header">
+          <div><p class="eyebrow" data-i18n-known>FIND WORK</p><h2 id="searchModalTitle" data-i18n-known>Search your workspace</h2></div>
+          <button class="modal-close" value="cancel" aria-label="Close dialog">×</button>
+        </header>
+        <div class="modal-body">
+          <label class="search-field"><span class="sr-only" data-i18n-known>Search tasks and initiatives</span><i>⌕</i><input id="searchInput" autocomplete="off" placeholder="Search tasks and initiatives…" /></label>
+          <p class="search-help" data-i18n-known>Searches work titles and initiatives as you type.</p>
+          <div class="search-results" id="searchResults"><p data-i18n-known>Start typing to search your work.</p></div>
+        </div>
+        <footer class="modal-footer"><span><kbd>Esc</kbd> <span data-i18n-known>to close</span></span><span><kbd>↵</kbd> <span data-i18n-known>to open a result</span></span></footer>
+      </form>
+    </dialog>
+
+    <dialog id="reviewModal" class="dialog--review" aria-labelledby="reviewModalTitle">
+      <form method="dialog" id="reviewForm" class="modal-form">
+        <header class="modal-header">
+          <div><p class="eyebrow" data-i18n-known>FRIDAY REVIEW</p><h2 id="reviewModalTitle" data-i18n-known>Close the week well</h2><p data-i18n-known>Capture the signal before planning the next cycle.</p></div>
+          <button class="modal-close" value="cancel" aria-label="Close dialog">×</button>
+        </header>
+        <div class="modal-body">
+          <div class="review-steps"><span class="active" data-i18n-known>1. Reflect</span><i></i><span data-i18n-known>2. Recommit</span></div>
+          <label><span data-i18n-known>What moved the company forward?</span><small data-i18n-known>Evidence, a decision, or a result—not a list of activity.</small><textarea id="reviewWin" maxlength="500" placeholder="Capture the evidence, decision, or result."></textarea></label>
+          <label><span data-i18n-known>What is the one focus for next week?</span><small data-i18n-known>Name the outcome, not just an activity.</small><textarea id="reviewNext" maxlength="500" placeholder="e.g. Decide whether the acute-care workflow is worth building for."></textarea></label>
+        </div>
+        <footer class="modal-footer"><span data-i18n-known>Takes about 10 minutes</span><button class="new-button submit-button" value="default"><span data-i18n-known>Save review</span> <span>→</span></button></footer>
+      </form>
+    </dialog>
+
+    <dialog id="financeModal" aria-labelledby="financeModalTitle">
+      <form method="dialog" id="financeForm" class="modal-form">
+        <header class="modal-header">
+          <div><p class="eyebrow" data-i18n-known>FINANCIAL SNAPSHOT</p><h2 id="financeModalTitle" data-i18n-known>Cash runway</h2><p data-i18n-known>A lightweight view of how much time the company has.</p></div>
+          <button class="modal-close" value="cancel" aria-label="Close dialog">×</button>
+        </header>
+        <div class="modal-body">
+          <div class="runway-preview"><span data-i18n-known>ESTIMATED RUNWAY</span><strong id="financeRunwayPreview">13.4 <small>months</small></strong><p data-i18n-known>Based on the cash and monthly burn below.</p></div>
+          <div class="form-row">
+            <label><span><span data-i18n-known>Cash available</span> <em>USD</em></span><input id="cashInput" required type="number" min="0" step="100" /></label>
+            <label><span><span data-i18n-known>Monthly burn</span> <em>USD</em></span><input id="burnInput" required type="number" min="1" step="10" /></label>
+          </div>
+          <p class="form-note" data-i18n-known>Runway updates automatically from cash available divided by monthly burn.</p>
+        </div>
+        <footer class="modal-footer"><span data-i18n-known>For planning, not accounting</span><button class="new-button submit-button" value="default"><span data-i18n-known>Save financials</span> <span>→</span></button></footer>
+      </form>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
